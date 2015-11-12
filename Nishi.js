@@ -17,7 +17,7 @@ db.open(function(err, db) {
 
 exports.findById = function(req, res) {
     var id = req.params.id;
-    console.log('Retrieving wine: ' + id);
+    console.log('Retrieving question: ' + id);
     db.collection('Level1QuestionCollections', function(err, collection) {
         collection.findOne({'_id':id}, function(err, item) {
 res.send(item);
@@ -29,10 +29,10 @@ exports.findByName = function(req,res){
 
 var name = req.params.name;
 console.log('the name in the request: ' + name);
-db.collection('wines',function(err,collection){
+db.collection('questions',function(err,collection){
 collection.findOne({'name':name},function(err,item){
 console.log('After responding');
-console.log('retrieved wine ' + name);
+console.log('retrieved question ' + name);
 
 
 
@@ -48,7 +48,7 @@ exports.displayImage = function(req, res) {
 
 var imageLoc = req.params.image;
     console.log('Retrieving image: ' + imageLoc);
-var img = fs.readFileSync('/Users/srinivasavelicheti/Desktop/wincellar/routes/'+imageLoc+'.gif');
+var img = fs.readFileSync('/Users/srinivasavelicheti/Desktop/question/routes/'+imageLoc+'.gif');
 res.writeHead(200, {'Content-Type': 'image/gif' });
      res.end(img, 'binary');
 
