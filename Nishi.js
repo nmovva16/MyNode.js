@@ -1,3 +1,4 @@
+//importing mongoDB as a module
 var mongo = require('mongodb');
 var fs = require('fs');
 
@@ -8,6 +9,7 @@ var Server = mongo.Server,
 var server = new Server('localhost', 27017, {auto_reconnect: true});
 db = new Db('NishitaDB', server);
 
+//opening connection 
 db.open(function(err, db) {
     if(!err) {
         console.log("Connected to 'NishitaDB' database");
@@ -15,6 +17,7 @@ db.open(function(err, db) {
 
 });
 
+//The findById returns JSON by asking the id
 exports.findById = function(req, res) {
     var id = req.params.id;
     console.log('Retrieving question: ' + id);
@@ -25,6 +28,8 @@ res.send(item);
     });
 };
 
+//findByName searches in mongoDB with name rather the ID. 
+//This operation is not used. 
 exports.findByName = function(req,res){
 
 var name = req.params.name;
@@ -44,6 +49,7 @@ res.send(item);
 
 };
 
+//displayImage takes a name and returns the gif image
 exports.displayImage = function(req, res) {
 
 var imageLoc = req.params.image;
