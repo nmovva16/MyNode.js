@@ -1,5 +1,5 @@
 
-var express = require('express'),
+var express = require('express');
 //importing the nishi.js which communicates with the mongodb
     nishi = require('./routes/nishi');
  
